@@ -37,11 +37,13 @@ function userName() {
 }
 userName();
 
-let countDownTime = 60;
+let countDownTime = sessionStorage.getItem("countDownTime") || 60;
 const timer = document.querySelector(".timer");
+timer.textContent = countDownTime + " secondi rimanenti";
 const interval = setInterval(function () {
   countDownTime--;
   timer.textContent = countDownTime + " secondi rimanenti";
+  sessionStorage.setItem("countDownTime", countDownTime);
   if (countDownTime <= 0) {
     clearInterval(interval);
     timer.textContent = "Tempo scaduto";
