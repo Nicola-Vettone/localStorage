@@ -38,15 +38,13 @@ elimina.onclick = function () {
 };
 userName();
 
-let countDownTime = sessionStorage.getItem("countDownTime") || 60;
+let countDownTime = sessionStorage.getItem("countDownTime") || 0;
 const timer = document.querySelector(".timer");
-timer.textContent = countDownTime + " secondi rimanenti";
+
+timer.textContent = countDownTime + " secondi trascorsi";
 const interval = setInterval(function () {
-  countDownTime--;
-  timer.textContent = countDownTime + " secondi rimanenti";
+  countDownTime++;
+
+  timer.textContent = countDownTime + " secondi trascorsi";
   sessionStorage.setItem("countDownTime", countDownTime);
-  if (countDownTime <= 0) {
-    clearInterval(interval);
-    timer.textContent = "Tempo scaduto";
-  }
 }, 1000);
