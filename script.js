@@ -26,15 +26,16 @@ function deleteName(nameUtente) {
   localStorage.removeItem("nameUtente", nameUtente);
 }
 
-elimina.onclick = function () {
-  deleteName(nameUtente.value);
-};
-
 const utente = document.querySelector("#nomeUtente");
 function userName() {
   let nomeUser = localStorage.getItem("nameUtente");
   return (utente.innerHTML = nomeUser);
 }
+
+elimina.onclick = function () {
+  deleteName(nameUtente.value);
+  utente.innerHTML = "";
+};
 userName();
 
 let countDownTime = sessionStorage.getItem("countDownTime") || 60;
